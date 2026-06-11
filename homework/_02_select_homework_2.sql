@@ -8,3 +8,16 @@ FROM employee
 WHERE ent_yn = 'N' AND phone LIKE '%2'
 ORDER BY hire_date DESC
 LIMIT 3;
+
+
+### Q2.
+
+# 재직 중인 ‘대리’들의 직원명, 직급명, 급여, 사원번호, 이메일, 전화번호, 입사일을 출력하세요.
+# 단, 급여를 기준으로 내림차순 출력하세요.
+SELECT e.emp_name 직원명, j.job_name 직급명, e.salary 급여, e.emp_id 사번, e.email 이메일, e.phone 전화번호, e.ent_date 입사일
+FROM employee e
+JOIN job j
+ON e.job_code = j.job_code
+WHERE j.job_name = '대리'
+  AND e.ent_yn = 'N'
+ORDER BY e.SALARY DESC;
